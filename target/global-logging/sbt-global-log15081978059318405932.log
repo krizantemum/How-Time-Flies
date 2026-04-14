@@ -1,0 +1,144 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\yurek\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\yurek\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.12.8 (Microsoft Java 11.0.30)
+[debug]       Load.loadUnit: plugins took 143.2487ms
+[debug]       Load.loadUnit: defsScala took 0.353ms
+[debug] [Loading] Scanning directory C:\Users\yurek\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\yurek\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 22.0375 ms
+[debug]           Load.resolveProject(global-plugins) took 47.6762ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\yurek\.sbt\1.0\plugins, plugins: List(<none>))) took 102.1427ms
+[debug] [Loading] Done in C:\Users\yurek\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 129.013ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.2262ms
+[debug]     Load.loadUnit(file:/C:/Users/yurek/.sbt/1.0/plugins/, ...) took 283.2163ms
+[debug]   Load.apply: load took 499.971ms
+[debug]   Load.apply: resolveProjects took 9.3889ms
+[debug]   Load.apply: finalTransforms took 62.0485ms
+[debug]   Load.apply: config.delegates took 8.1873ms
+[debug]   Load.apply: Def.make(settings)... took 552.1539ms
+[debug]   Load.apply: structureIndex took 113.5124ms
+[debug]   Load.apply: mkStreams took 1.5059ms
+[info] loading global plugins from C:\Users\yurek\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 6440.3387ms
+[debug]           Load.loadUnit: plugins took 43.8492ms
+[debug]           Load.loadUnit: defsScala took 0.0041ms
+[debug] [Loading] Scanning directory C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\project
+[debug]             Load.loadUnit: mkEval took 18.3425ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 2.0672 ms
+[info] loading settings for project how-love-flies-build from idea.sbt...
+[debug]               Load.resolveProject(how-love-flies-build) took 3.8885ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id how-love-flies-build, base: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\project, plugins: List(<none>))) took 6.5352ms
+[debug] [Loading] Done in C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\project, returning: (how-love-flies-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 3164.812ms
+[debug]           Load.loadUnit: cleanEvalClasses took 6.3826ms
+[debug]         Load.loadUnit(file:/C:/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/project/, ...) took 3217.0075ms
+[debug]       Load.apply: load took 3219.0853ms
+[debug]       Load.apply: resolveProjects took 0.1431ms
+[debug]       Load.apply: finalTransforms took 13.9178ms
+[debug]       Load.apply: config.delegates took 0.5163ms
+[debug]       Load.apply: Def.make(settings)... took 99.1914ms
+[debug]       Load.apply: structureIndex took 29.2575ms
+[debug]       Load.apply: mkStreams took 0.003ms
+[info] loading project definition from C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
+[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
+[debug]     Load.loadUnit: plugins took 8887.303ms
+[debug]     Load.loadUnit: defsScala took 0.0039ms
+[debug] [Loading] Scanning directory C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies
+[debug]       Load.loadUnit: mkEval took 0.3543ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin)))
+[debug] Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 3.0116 ms
+[info] loading settings for project root from build.sbt...
+[debug]         Load.resolveProject(root) took 57.9262ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies, plugins: List(<none>))) took 63.2877ms
+[debug] [Loading] Done in C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1851.0864ms
+[debug]     Load.loadUnit: cleanEvalClasses took 10.6807ms
+[debug]   Load.loadUnit(file:/C:/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/, ...) took 10749.7149ms
+[debug] Load.apply: load took 10752.1854ms
+[debug] Load.apply: resolveProjects took 0.1269ms
+[debug] Load.apply: finalTransforms took 53.1054ms
+[debug] Load.apply: config.delegates took 0.3496ms
+[debug] Load.apply: Def.make(settings)... took 113.7114ms
+[debug] Load.apply: structureIndex took 25.9209ms
+[debug] Load.apply: mkStreams took 0.0031ms
+[info] set current project to How-Love-Flies (in build file:/C:/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/)
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 22375 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 22375, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to How-Love-Flies (in build file:/C:/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/)
+[debug] > Exec(idea-shell, None, None)
