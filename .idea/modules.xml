@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/How-Love-Flies.iml" filepath="$PROJECT_DIR$/.idea/modules/How-Love-Flies.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/How-Love-Flies-build.iml" filepath="$PROJECT_DIR$/.idea/modules/How-Love-Flies-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.How-Love-Flies-build.iml" filepath="$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.How-Love-Flies-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.main.iml" filepath="$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.test.iml" filepath="$PROJECT_DIR$/.idea/modules/How-Love-Flies/How-Love-Flies.test.iml" />
     </modules>
   </component>
 </project>

@@ -12,7 +12,7 @@ object ExampleEmotion {
 
     val spark = SparkSession.builder()
       .appName("ExampleEmotion")
-      .master("local[2]")   // use all cores
+      .master("local[7]")
       .getOrCreate()
 
     import spark.implicits._

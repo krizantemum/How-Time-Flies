@@ -7,7 +7,12 @@ import com.yurekce.sparkproject.config.SparkConfig
 object Main {
   def main(args: Array[String]): Unit = {
     println("Available cores: " + Runtime.getRuntime.availableProcessors())
-    println("Available RAM: " + Runtime.getRuntime.maxMemory() / 1024 / 1024 / 1024.0)
+    val bean = java.lang.management.ManagementFactory.getOperatingSystemMXBean
+      .asInstanceOf[com.sun.management.OperatingSystemMXBean]
+
+    val totalRAM = bean.getTotalPhysicalMemorySize / (1024.0 * 1024 * 1024)
+    println(f"Fiziksel Toplam RAM: $totalRAM%.2f GB")
+
 
     val path = "spotify_data/songs.csv"
 
