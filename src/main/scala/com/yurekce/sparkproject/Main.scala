@@ -47,7 +47,7 @@ object Main {
     healthyData.unpersist()
     lyricsHealthyData.unpersist()
 
-    val takeSome = lyricsChunked.sample(50000)
+    val takeSome = lyricsChunked.limit(10)
 
     val fittedModel = EmotionProcessing.buildAndFitModel(takeSome)
     val emotionPerChunk = EmotionProcessing.run(takeSome, fittedModel)

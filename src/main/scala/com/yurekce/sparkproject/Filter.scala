@@ -27,6 +27,8 @@ object Filter {
     df.withColumn("lyrics", cleanNewLinesUDF(col("lyrics")))
   }
   def popularityClean(df: DataFrame): DataFrame = {
-    df.filter("popularity > 0")
+    val filteredDf = df.filter(col("popularity") > 0)
+    println("yo bigger 0" + filteredDf.count())
+    return filteredDf
   }
 }
