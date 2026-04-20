@@ -15,6 +15,7 @@ object LoveAndLustAnalyzer {
   def analyzeLyrics(df: DataFrame): DataFrame = {
     df.select(
       col("genre"),
+      col("year"),
       col("lyrics"),
       // Find all love/lust words and count the size of the resulting array
       size(regexp_extract_all(col("lyrics"), lit(loveRegex), lit(0))).as("love_count"),
@@ -51,6 +52,26 @@ object LoveAndLustAnalyzer {
       .option("sep", "\t")
       .mode("overwrite")
       .save("csvFiles/loveAndLust")
+
+    val loveLustYearDF = df.sparkSession.sql(
+      """
+          SELECT
+            year,
+            SUM(love_count) as total_love_words,
+            SUM(lust_count) as total_lust_words,
+            AVG(love_count) as avg_love_per_song,
+            AVG(lust_count) as avg_lust_per_song
+          FROM lyric_stats
+          GROUP BY year
+          ORDER BY year DESC
+        """)
+
+    loveLustYearDF.write
+      .format("csv")
+      .option("header", "true")
+      .option("sep", "\t")
+      .mode("overwrite")
+      .save("csvFiles/loveLustYear")
 
     summaryDf.show()
   }

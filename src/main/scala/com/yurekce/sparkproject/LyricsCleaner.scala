@@ -14,7 +14,7 @@ object LyricsCleaner {
         .split("\n")                      // split into lines
         .map(_.trim)
         .filter(_.nonEmpty)               // remove empty lines
-        .grouped(8)                       // group every 4 lines
+        .grouped(8)                       // group every 8 lines
         .map(_.mkString(" "))             // merge into single string
         .toSeq
     }

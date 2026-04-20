@@ -24,7 +24,7 @@ object EmotionProcessing {
       .pretrained("bert_sequence_classifier_emotion", "en")
       .setInputCols(Array("document", "token"))
       .setOutputCol("emotion")
-      .setBatchSize(32) // process 32 chunks at once instead of 1
+      .setBatchSize(64) // process 16 chunks at once instead of 1
       .setMaxSentenceLength(128) // lyrics chunks won't exceed 128 tokens — saves memory
 
 

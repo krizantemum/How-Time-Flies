@@ -1,9 +1,7 @@
 package com.yurekce.sparkproject
 
-import com.yurekce.sparkproject.ValenceAnalyzer._
-import com.yurekce.sparkproject.DanceabilityAnalyzer._
 import com.yurekce.sparkproject.config.SparkConfig
-import org.apache.spark.sql.functions.{col, explode, udf}
+import org.apache.spark.sql.functions.{col, explode}
 import org.apache.spark.storage.StorageLevel
 
 object Main {
@@ -12,83 +10,69 @@ object Main {
 
     val bean = java.lang.management.ManagementFactory.getOperatingSystemMXBean
       .asInstanceOf[com.sun.management.OperatingSystemMXBean]
-
-    val totalRAM = bean.getTotalPhysicalMemorySize / (1024.0 * 1024 * 1024)
-    println(f"Fiziksel Toplam RAM: $totalRAM%.2f GB")
-
-    val path = "spotify_data/songs.csv"
+    println(f"Fiziksel Toplam RAM: ${bean.getTotalPhysicalMemorySize / (1024.0 * 1024 * 1024)}%.2f GB")
 
     val spark = SparkConfig.createSession()
-    val data = DataLoader.load(spark, path)
 
-    println("how many data " + data.count())
+    // Single scan — clean and cache in one shot, no raw count
+    val healthyData = Filter.clean(DataLoader.load(spark, "spotify_data/songs.csv"))
+      .persist(StorageLevel.MEMORY_AND_DISK)
+    println("Healthy rows: " + healthyData.count()) // warms the cache
 
-    val healthyData = Filter.clean(data).cache()
-    println(healthyData.count())
+    val lyricsHealthyData = Filter.lyricsClean(healthyData)
+      .persist(StorageLevel.MEMORY_AND_DISK)
+    println("Lyrics rows: " + lyricsHealthyData.count()) // warms the cache
 
+    lyricsHealthyData.show(10, truncate = false)
 
     /*
-    val danceabilityData = healthyData.select("id", "year", "danceability")
-    DanceabilityAnalyzer.danceabilityAverageByYear(danceabilityData)
+    LoveAndLustAnalyzer.getWordStats(
+      LoveAndLustAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics", "genre"))
+    )
+    LonelinessAnalyzer.getWordStats(
+      LonelinessAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics"))
+    )
+    */
 
-    val livenessData = healthyData.select("id", "year", "liveness")
-    LivenessAnalyzer.livenessAverageByYear(livenessData)
-
-    val valenceData = healthyData.select("id", "year", "valence")
-    ValenceAnalyzer.valenceAverageByYear(valenceData)
-
-    val tempoData = healthyData.select("id", "year", "tempo")
-    TempoAnalyzer.TempoAverageByYear(tempoData)
-
-    val tempoGenre = healthyData.select("id", "genre", "tempo")
-    TempoOfGenresAnalyzer.tempoByGenre(tempoGenre)
-
-    val loveData = healthyData.select("id", "genre", "lyrics")
-    LoveAndLustAnalyzer.getWordStats(LoveAndLustAnalyzer.analyzeLyrics(loveData))
-
-     */
-
-    val lonelinessData = healthyData.select("id", "year", "lyrics")
-    LonelinessAnalyzer.getWordStats(LonelinessAnalyzer.analyzeLyrics(lonelinessData))
-
-
-
-
-    val lyricsChunked = healthyData
+    val lyricsChunked = Filter.popularityClean(lyricsHealthyData)
       .withColumn("chunks", LyricsCleaner.splitByFourLines(col("lyrics")))
       .withColumn("chunk", explode(col("chunks")))
       .select("id", "year", "chunk")
+      .repartition(200, col("id"))
       .persist(StorageLevel.MEMORY_AND_DISK)
 
+    println("Chunk count: " + lyricsChunked.count()) // warms BEFORE BERT runs
 
-  /*
-    val fittedModel = EmotionProcessing.buildAndFitModel(lyricsChunked)
-    val emotionPerChunk = EmotionProcessing.run(lyricsChunked, fittedModel)
+    // Free memory no longer needed before loading BERT
+    healthyData.unpersist()
+    lyricsHealthyData.unpersist()
 
-    println("incoming count of how many chunks may universe save us")
-    println(lyricsChunked.count())
+    val takeSome = lyricsChunked.sample(50000)
 
-   */
+    val fittedModel = EmotionProcessing.buildAndFitModel(takeSome)
+    val emotionPerChunk = EmotionProcessing.run(takeSome, fittedModel)
 
-    /*
+    // Write FIRST — breaks lineage so BERT never runs twice
     emotionPerChunk
       .write
       .mode("overwrite")
       .parquet("checkpoints/emotionPerChunk")
 
-     */
+    takeSome.unpersist()
 
-    /*
+    // All downstream work reads from parquet — BERT is done
+    val savedChunks = spark.read.parquet("checkpoints/emotionPerChunk")
 
-    val num = 10000
-    emotionPerChunk.show(num, false)
+    savedChunks.show(10, false)
 
-    // Full aggregation pipeline
-    val emotionPerSong = EmotionProcessing.aggregateBySong(emotionPerChunk.limit(num))
-    emotionPerSong.show(truncate = false)
+    val emotionPerSong = EmotionProcessing.aggregateBySong(savedChunks)
     val finalResult = EmotionProcessing.dominantSongEmotion(emotionPerSong)
-    finalResult.show(num, false)
 
-     */
+    finalResult
+      .write
+      .mode("overwrite")
+      .parquet("checkpoints/finalResult")
+
+    spark.read.parquet("checkpoints/finalResult").show(10, false)
   }
 }
