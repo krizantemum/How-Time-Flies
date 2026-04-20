@@ -27,20 +27,6 @@ object Main {
     println(healthyData.count())
 
 
-    /*
-    val valenceData = healthyData.select("id", "year", "valence")
-
-    val valenceByYear = valenceAverageByYear(valenceData)
-    valenceByYear.show(Int.MaxValue, false)
-    valenceByYear.write
-      .format("csv")
-      .option("header", "true")
-      .option("sep", "\t")
-      .mode("overwrite")
-      .save("csvFiles")
-    */
-
-
     val danceabilityData = healthyData.select("id", "year", "danceability")
     DanceabilityAnalyzer.danceabilityAverageByYear(danceabilityData)
 
@@ -53,16 +39,23 @@ object Main {
     val tempoData = healthyData.select("id", "year", "tempo")
     TempoAnalyzer.TempoAverageByYear(tempoData)
 
+    val tempoGenre = healthyData.select("id", "genre", "tempo")
+    TempoOfGenresAnalyzer.tempoByGenre(tempoGenre)
+
+    val loveData = healthyData.select("id", "genre", "lyrics")
+    LoveAndLustAnalyzer.getWordStats(LoveAndLustAnalyzer.analyzeLyrics(loveData))
+
+    val lonelinessData = healthyData.select("id", "year", "lyrics")
+
+
+
+
 
     val lyricsChunked = healthyData
       .withColumn("chunks", LyricsCleaner.splitByFourLines(col("lyrics")))
       .withColumn("chunk", explode(col("chunks")))
       .select("id", "year", "chunk")
       .persist(StorageLevel.MEMORY_AND_DISK)
-
-
-
-
 
 
   /*
