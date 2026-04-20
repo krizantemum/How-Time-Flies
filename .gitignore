@@ -1,1 +1,10 @@
 /spotify_data
+# IDEs
+.idea/
+.bsp/
+*.iml
+
+# Build Tools
+target/
+project/target/
+project/project/

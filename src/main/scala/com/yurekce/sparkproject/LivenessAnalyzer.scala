@@ -1,14 +1,13 @@
 package com.yurekce.sparkproject
-
 import org.apache.spark.sql.DataFrame
 
-object DanceabilityAnalyzer {
+object LivenessAnalyzer {
 
-  def danceabilityAverageByYear(df: DataFrame): Unit = {
+  def livenessAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
-      .avg("danceability")
-      .withColumnRenamed("avg(danceability)", "avg_danceability")
+      .avg("liveness")
+      .withColumnRenamed("avg(liveness)", "avg_liveness")
       .join(
         df.groupBy("year").count().withColumnRenamed("count", "num_songs"),
         Seq("year")
@@ -20,7 +19,7 @@ object DanceabilityAnalyzer {
       .option("header", "true")
       .option("sep", "\t")
       .mode("overwrite")
-      .save("csvFiles/danceabilityData")
+      .save("csvFiles/livenessData")
 
     processedDf.show(truncate = false)
   }
