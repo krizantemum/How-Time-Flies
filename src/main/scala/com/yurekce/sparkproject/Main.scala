@@ -27,6 +27,7 @@ object Main {
     println(healthyData.count())
 
 
+    /*
     val danceabilityData = healthyData.select("id", "year", "danceability")
     DanceabilityAnalyzer.danceabilityAverageByYear(danceabilityData)
 
@@ -45,8 +46,10 @@ object Main {
     val loveData = healthyData.select("id", "genre", "lyrics")
     LoveAndLustAnalyzer.getWordStats(LoveAndLustAnalyzer.analyzeLyrics(loveData))
 
-    val lonelinessData = healthyData.select("id", "year", "lyrics")
+     */
 
+    val lonelinessData = healthyData.select("id", "year", "lyrics")
+    LonelinessAnalyzer.getWordStats(LonelinessAnalyzer.analyzeLyrics(lonelinessData))
 
 
 
