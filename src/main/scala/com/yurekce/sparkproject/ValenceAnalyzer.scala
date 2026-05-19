@@ -1,17 +1,16 @@
 package com.yurekce.sparkproject
 
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.{avg, count}
 
 object ValenceAnalyzer {
 
   def valenceAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
-      .avg("valence")
-      .withColumnRenamed("avg(valence)", "avg_valence")
-      .join(
-        df.groupBy("year").count().withColumnRenamed("count", "num_songs"),
-        Seq("year")
+      .agg(
+        avg("valence").as("avg_valence"),
+        count("valence").as("num_songs")
       )
       .orderBy("year")
 
@@ -22,7 +21,7 @@ object ValenceAnalyzer {
       .mode("overwrite")
       .save("csvFiles/valenceData")
 
-    processedDf.show(truncate = false)
+    processedDf.show(1000, truncate = false)
   }
 
 }

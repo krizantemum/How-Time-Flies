@@ -87,7 +87,12 @@ object EmotionProcessing {
     val cols = emotions.map(col)
 
     val pickDominantLabel = udf((counts: Seq[Long]) => {
-      emotions(counts.indexOf(counts.max))
+      if (counts == null || counts.isEmpty) null.asInstanceOf[String]
+      else {
+        val max = counts.max
+        if (max <= 0L) null.asInstanceOf[String]
+        else emotions(counts.indexOf(max))
+      }
     })
 
     df.withColumn(

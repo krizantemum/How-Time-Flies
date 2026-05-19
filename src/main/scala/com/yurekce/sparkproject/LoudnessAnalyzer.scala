@@ -3,13 +3,14 @@ package com.yurekce.sparkproject
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.{avg, count}
 
-object TempoAnalyzer {
-  def TempoAverageByYear(df: DataFrame): Unit = {
+object LoudnessAnalyzer {
+
+  def loudnessAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
       .agg(
-        avg("tempo").as("avg_tempo"),
-        count("tempo").as("num_songs")
+        avg("loudness").as("avg_loudness"),
+        count("loudness").as("num_songs")
       )
       .orderBy("year")
 
@@ -18,9 +19,8 @@ object TempoAnalyzer {
       .option("header", "true")
       .option("sep", "\t")
       .mode("overwrite")
-      .save("csvFiles/tempoData")
+      .save("csvFiles/loudnessData")
 
     processedDf.show(1000, truncate = false)
   }
-
 }

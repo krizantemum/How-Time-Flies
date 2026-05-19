@@ -1,17 +1,16 @@
 package com.yurekce.sparkproject
 
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.{avg, count}
 
 object DanceabilityAnalyzer {
 
   def danceabilityAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
-      .avg("danceability")
-      .withColumnRenamed("avg(danceability)", "avg_danceability")
-      .join(
-        df.groupBy("year").count().withColumnRenamed("count", "num_songs"),
-        Seq("year")
+      .agg(
+        avg("danceability").as("avg_danceability"),
+        count("danceability").as("num_songs")
       )
       .orderBy("year")
 
@@ -22,6 +21,6 @@ object DanceabilityAnalyzer {
       .mode("overwrite")
       .save("csvFiles/danceabilityData")
 
-    processedDf.show(truncate = false)
+    processedDf.show(1000, truncate = false)
   }
 }

@@ -11,8 +11,8 @@ object SparkConfig {
       .config("spark.sql.shuffle.partitions", "14")
       .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
       .config("spark.kryoserializer.buffer.max", "2000M")
-      .config("spark.memory.fraction", "0.6")
-      .config("spark.memory.storageFraction", "0.3")
+      .config("spark.memory.fraction", "0.7")
+      .config("spark.memory.storageFraction", "0.5")
       .config("spark.jars.packages", "com.johnsnowlabs.nlp:spark-nlp_2.12:6.3.3")
       .getOrCreate()
   }

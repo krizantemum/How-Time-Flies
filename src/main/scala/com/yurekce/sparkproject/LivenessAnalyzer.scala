@@ -1,16 +1,15 @@
 package com.yurekce.sparkproject
 import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.functions.{avg, count}
 
 object LivenessAnalyzer {
 
   def livenessAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
-      .avg("liveness")
-      .withColumnRenamed("avg(liveness)", "avg_liveness")
-      .join(
-        df.groupBy("year").count().withColumnRenamed("count", "num_songs"),
-        Seq("year")
+      .agg(
+        avg("liveness").as("avg_liveness"),
+        count("liveness").as("num_songs")
       )
       .orderBy("year")
 
@@ -21,6 +20,6 @@ object LivenessAnalyzer {
       .mode("overwrite")
       .save("csvFiles/livenessData")
 
-    processedDf.show(truncate = false)
+    processedDf.show(1000, truncate = false)
   }
 }

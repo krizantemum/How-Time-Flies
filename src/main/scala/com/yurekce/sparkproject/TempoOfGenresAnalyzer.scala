@@ -1,5 +1,4 @@
 package com.yurekce.sparkproject
-import org.apache.spark.sql.DataFrame
 
 object TempoOfGenresAnalyzer {
 

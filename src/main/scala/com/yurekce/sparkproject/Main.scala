@@ -1,7 +1,7 @@
 package com.yurekce.sparkproject
 
 import com.yurekce.sparkproject.config.SparkConfig
-import org.apache.spark.sql.functions.{col, explode}
+import org.apache.spark.sql.functions.{col, explode, max, min}
 import org.apache.spark.storage.StorageLevel
 
 object Main {
@@ -14,64 +14,91 @@ object Main {
 
     val spark = SparkConfig.createSession()
 
-    // Single scan — clean and cache in one shot, no raw count
-    val healthyData = Filter.clean(DataLoader.load(spark, "spotify_data/songs.csv"))
-      .persist(StorageLevel.MEMORY_AND_DISK)
-    println("Healthy rows: " + healthyData.count()) // warms the cache
+    try {
+      val healthyData = Filter.clean(DataLoader.load(spark, "spotify_data/songs.csv"))
+        .persist(StorageLevel.MEMORY_AND_DISK)
+      println("Healthy rows: " + healthyData.count()) // warms the cache
 
-    val lyricsHealthyData = Filter.lyricsClean(healthyData)
-      .persist(StorageLevel.MEMORY_AND_DISK)
-    println("Lyrics rows: " + lyricsHealthyData.count()) // warms the cache
+      // Per-feature averages by year. Each writes to its own csvFiles/<feature>Data folder.
+      DanceabilityAnalyzer.danceabilityAverageByYear(healthyData)
+      EnergyAnalyzer.energyAverageByYear(healthyData)
+      LoudnessAnalyzer.loudnessAverageByYear(healthyData)
+      SpeechinessAnalyzer.speechinessAverageByYear(healthyData)
+      AcousticnessAnalyzer.acousticnessAverageByYear(healthyData)
+      InstrumentalnessAnalyzer.instrumentalnessAverageByYear(healthyData)
+      LivenessAnalyzer.livenessAverageByYear(healthyData)
+      ValenceAnalyzer.valenceAverageByYear(healthyData)
+      TempoAnalyzer.TempoAverageByYear(healthyData)
+      DurationAnalyzer.durationAverageByYear(healthyData)
 
-    healthyData.unpersist()
+      // Offline: fit the LSH pipeline once and cache the transformed catalog.
+      val (annModel, annCatalogRaw) = RecommenderANN.build(healthyData)
+      val annCatalog = annCatalogRaw.persist(StorageLevel.MEMORY_AND_DISK)
+      println("ANN catalog rows: " + annCatalog.count()) // forces the build
 
-    /*
-    LoveAndLustAnalyzer.getWordStats(
-      LoveAndLustAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics", "genre"))
-    )
-    LonelinessAnalyzer.getWordStats(
-      LonelinessAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics"))
-    )
-    */
+      // Online: each call is an approxNearestNeighbors query against the cache.
+      RecommenderANN
+        .recommend(annModel, annCatalog, seedId = "36G7q9VtOVEYhuALFcO04W", topK = 5)
+        .show(false)
 
-    val lyricsChunked = Filter.popularityClean(lyricsHealthyData)
-      .withColumn("chunks", LyricsCleaner.splitByFourLines(col("lyrics")))
-      .withColumn("chunk", explode(col("chunks")))
-      .select("id", "year", "chunk")
-      .repartition(200, col("id"))
-      .persist(StorageLevel.MEMORY_AND_DISK)
+      annCatalog.unpersist()
 
-    println("Chunk count: " + lyricsChunked.count()) // warms BEFORE BERT runs
+      val lyricsHealthyData = Filter.lyricsClean(healthyData)
+        .persist(StorageLevel.MEMORY_AND_DISK)
+      println("Lyrics rows: " + lyricsHealthyData.count()) // warms the cache
 
-    // Free memory no longer needed before loading BERT
-    lyricsHealthyData.unpersist()
+      healthyData.unpersist()
 
-    val takeSome = lyricsChunked.limit(10)
+      /*
+      LoveAndLustAnalyzer.getWordStats(
+        LoveAndLustAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics", "genre"))
+      )
+      LonelinessAnalyzer.getWordStats(
+        LonelinessAnalyzer.analyzeLyrics(lyricsHealthyData.select("id", "year", "lyrics"))
+      )
+      */
 
-    val fittedModel = EmotionProcessing.buildAndFitModel(takeSome)
-    val emotionPerChunk = EmotionProcessing.run(takeSome, fittedModel)
+      val lyricsChunked = Filter.popularityClean(lyricsHealthyData)
+        .withColumn("chunks", LyricsCleaner.splitByFourLines(col("lyrics")))
+        .withColumn("chunk", explode(col("chunks")))
+        .select("id", "year", "chunk")
+        .repartition(200, col("id"))
+        .persist(StorageLevel.MEMORY_AND_DISK)
 
-    // Write FIRST — breaks lineage so BERT never runs twice
-    emotionPerChunk
-      .write
-      .mode("overwrite")
-      .parquet("checkpoints/emotionPerChunk")
+      println("Chunk count: " + lyricsChunked.count()) // warms BEFORE BERT runs
 
-    takeSome.unpersist()
+      // Free memory no longer needed before loading BERT
+      lyricsHealthyData.unpersist()
 
-    // All downstream work reads from parquet — BERT is done
-    val savedChunks = spark.read.parquet("checkpoints/emotionPerChunk")
+      val takeSome = lyricsChunked.limit(10)
 
-    savedChunks.show(10, false)
+      val fittedModel = EmotionProcessing.buildAndFitModel(takeSome)
+      val emotionPerChunk = EmotionProcessing.run(takeSome, fittedModel)
 
-    val emotionPerSong = EmotionProcessing.aggregateBySong(savedChunks)
-    val finalResult = EmotionProcessing.dominantSongEmotion(emotionPerSong)
+      // Write FIRST — breaks lineage so BERT never runs twice
+      emotionPerChunk
+        .write
+        .mode("overwrite")
+        .parquet("checkpoints/emotionPerChunk")
 
-    finalResult
-      .write
-      .mode("overwrite")
-      .parquet("checkpoints/finalResult")
+      takeSome.unpersist()
 
-    spark.read.parquet("checkpoints/finalResult").show(10, false)
+      // All downstream work reads from parquet — BERT is done
+      val savedChunks = spark.read.parquet("checkpoints/emotionPerChunk")
+
+      savedChunks.show(10, false)
+
+      val emotionPerSong = EmotionProcessing.aggregateBySong(savedChunks)
+      val finalResult = EmotionProcessing.dominantSongEmotion(emotionPerSong)
+
+      finalResult
+        .write
+        .mode("overwrite")
+        .parquet("checkpoints/finalResult")
+
+      spark.read.parquet("checkpoints/finalResult").show(10, false)
+    } finally {
+      spark.stop()
+    }
   }
 }
