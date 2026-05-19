@@ -31,6 +31,9 @@ object Main {
       TempoAnalyzer.TempoAverageByYear(healthyData)
       DurationAnalyzer.durationAverageByYear(healthyData)
 
+      // Cluster years on (avg_valence, avg_energy); K auto-picked by elbow.
+      YearMoodClusterer.runAll(healthyData)
+
       // Offline: fit the LSH pipeline once and cache the transformed catalog.
       val (annModel, annCatalogRaw) = RecommenderANN.build(healthyData)
       val annCatalog = annCatalogRaw.persist(StorageLevel.MEMORY_AND_DISK)
