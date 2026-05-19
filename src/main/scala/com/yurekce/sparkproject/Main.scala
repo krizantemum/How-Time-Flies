@@ -23,7 +23,7 @@ object Main {
       .persist(StorageLevel.MEMORY_AND_DISK)
     println("Lyrics rows: " + lyricsHealthyData.count()) // warms the cache
 
-    lyricsHealthyData.show(10, truncate = false)
+    healthyData.unpersist()
 
     /*
     LoveAndLustAnalyzer.getWordStats(
@@ -44,7 +44,6 @@ object Main {
     println("Chunk count: " + lyricsChunked.count()) // warms BEFORE BERT runs
 
     // Free memory no longer needed before loading BERT
-    healthyData.unpersist()
     lyricsHealthyData.unpersist()
 
     val takeSome = lyricsChunked.limit(10)

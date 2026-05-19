@@ -28,7 +28,7 @@ object Filter {
   }
   def popularityClean(df: DataFrame): DataFrame = {
     val filteredDf = df.filter(col("popularity") > 0)
-    println("yo bigger 0" + filteredDf.count())
-    return filteredDf
+    println("yo bigger 0 " + filteredDf.count())
+    filteredDf
   }
 }

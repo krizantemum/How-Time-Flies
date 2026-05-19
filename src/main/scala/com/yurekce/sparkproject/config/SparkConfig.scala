@@ -13,7 +13,7 @@ object SparkConfig {
       .config("spark.kryoserializer.buffer.max", "2000M")
       .config("spark.memory.fraction", "0.6")
       .config("spark.memory.storageFraction", "0.3")
-      .config("spark.jars.packages", "com.johnsnowlabs.nlp:spark-nlp_2.12:5.1.4")
+      .config("spark.jars.packages", "com.johnsnowlabs.nlp:spark-nlp_2.12:6.3.3")
       .getOrCreate()
   }
 }

@@ -5,7 +5,7 @@ import org.apache.spark.sql.functions.{col, lit, regexp_extract_all, size}
 
 object LonelinessAnalyzer {
 
-  val lonelyWords = List("lonely", "loneliness", "alone", "cold", "nobody", "empty", "silence ", "silent", "lost",
+  val lonelyWords = List("lonely", "loneliness", "alone", "cold", "nobody", "empty", "silence", "silent", "lost",
     "numb", "isolated")
   val lonelyRegex = "(?i)\\b(" + lonelyWords.mkString("|") + ")\\b"
 
