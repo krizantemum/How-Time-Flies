@@ -1,7 +1,7 @@
 package com.yurekce.sparkproject
 
 import com.yurekce.sparkproject.config.SparkConfig
-import org.apache.spark.sql.functions.{col, explode, max, min}
+import org.apache.spark.sql.functions.{avg, col, count, explode, max, min}
 import org.apache.spark.storage.StorageLevel
 
 object Main {
@@ -33,6 +33,9 @@ object Main {
 
       // Cluster years on (avg_valence, avg_energy); K auto-picked by elbow.
       YearMoodClusterer.runAll(healthyData)
+
+      // Cluster years on their genre mix; K auto-picked by elbow.
+      YearGenreClusterer.runAll(healthyData)
 
       // Offline: fit the LSH pipeline once and cache the transformed catalog.
       val (annModel, annCatalogRaw) = RecommenderANN.build(healthyData)

@@ -2056,3 +2056,217 @@ Caused by: java.net.URISyntaxException: Illegal character in scheme name at inde
 2026.05.19 15:51:07 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\ValenceAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
 2026.05.19 15:51:22 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\TempoAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
 2026.05.19 15:51:33 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\DurationAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+May 19, 2026 4:25:07 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "_claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala"
+  ]
+}
+java.lang.IllegalArgumentException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI.create(URI.java:906)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:209)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:787)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:784)
+	at scala.meta.internal.metals.WorkspaceLspService.didFocus(WorkspaceLspService.scala:808)
+	at scala.meta.metals.lsp.DelegatingScalaService.didFocus(DelegatingScalaService.scala:42)
+	at jdk.internal.reflect.GeneratedMethodAccessor9.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:225)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:192)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.URISyntaxException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3147)
+	at java.base/java.net.URI$Parser.checkChar(URI.java:3157)
+	at java.base/java.net.URI$Parser.parse(URI.java:3172)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URI.create(URI.java:904)
+	... 20 more
+
+2026.05.19 16:25:36 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:25:36 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:13 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+May 19, 2026 4:27:13 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "_claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala"
+  ]
+}
+java.lang.IllegalArgumentException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI.create(URI.java:906)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:209)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:787)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:784)
+	at scala.meta.internal.metals.WorkspaceLspService.didFocus(WorkspaceLspService.scala:808)
+	at scala.meta.metals.lsp.DelegatingScalaService.didFocus(DelegatingScalaService.scala:42)
+	at jdk.internal.reflect.GeneratedMethodAccessor9.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:225)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:192)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.URISyntaxException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3147)
+	at java.base/java.net.URI$Parser.checkChar(URI.java:3157)
+	at java.base/java.net.URI$Parser.parse(URI.java:3172)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URI.create(URI.java:904)
+	... 20 more
+
+2026.05.19 16:27:13 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:13 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:16 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+May 19, 2026 4:27:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "_claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala"
+  ]
+}
+java.lang.IllegalArgumentException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI.create(URI.java:906)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:209)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:787)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:784)
+	at scala.meta.internal.metals.WorkspaceLspService.didFocus(WorkspaceLspService.scala:808)
+	at scala.meta.metals.lsp.DelegatingScalaService.didFocus(DelegatingScalaService.scala:42)
+	at jdk.internal.reflect.GeneratedMethodAccessor9.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:225)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:192)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.URISyntaxException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearMoodClusterer.scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3147)
+	at java.base/java.net.URI$Parser.checkChar(URI.java:3157)
+	at java.base/java.net.URI$Parser.parse(URI.java:3172)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URI.create(URI.java:904)
+	... 20 more
+
+2026.05.19 16:27:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:53 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:27:58 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 16:30:13 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.19 17:00:18 INFO  Shutting down server
+2026.05.19 17:00:18 INFO  Memory monitor stopped
+2026.05.19 17:00:18 INFO  shutting down Metals
+2026.05.19 17:00:18 ERROR Unexpected error initializing server: 
+org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Request window/showMessageRequest failed with message: Canceled
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:214)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+
+2026.05.19 17:00:19 INFO  Exiting server
+2026.05.20 16:10:03 INFO  Started: Metals version 1.6.7 in folders 'C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies' for client Visual Studio Code 1.120.0.
+2026.05.20 16:10:03 INFO  Memory monitor started
+2026.05.20 16:10:03 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.05.20 16:10:04 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:07 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:07 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala
+2026.05.20 16:10:07 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\YearMoodClusterer.scala
+2026.05.20 16:10:10 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:10 INFO  time: code lens generation in 3.52s
+2026.05.20 16:10:11 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:47 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\DataLoader.scala
+2026.05.20 16:10:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\DataLoader.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Filter.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:47 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Filter.scala
+2026.05.20 16:10:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:52 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\TempoOfGenresAnalyzer.scala
+2026.05.20 16:10:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\TempoOfGenresAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:52 WARN  no build target for: C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\ValenceAnalyzer.scala
+2026.05.20 16:10:53 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\ValenceAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:10:54 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:13:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\DataLoader.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:13:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Filter.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:13:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\TempoOfGenresAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:13:52 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\ValenceAnalyzer.scala. Using presentation compiler with project's scala-library version: 3.3.7
+May 20, 2026 4:15:18 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": [
+    "_claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearGenreClusterer.scala"
+  ]
+}
+java.lang.IllegalArgumentException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearGenreClusterer.scala
+	at java.base/java.net.URI.create(URI.java:906)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:209)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:787)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:784)
+	at scala.meta.internal.metals.WorkspaceLspService.didFocus(WorkspaceLspService.scala:808)
+	at scala.meta.metals.lsp.DelegatingScalaService.didFocus(DelegatingScalaService.scala:42)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:225)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:192)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.URISyntaxException: Illegal character in scheme name at index 0: _claude_vscode_fs_right:/c%3A/Users/yurek/OneDrive/Documents/GitHub/How-Love-Flies/How-Love-Flies/src/main/scala/com/yurekce/sparkproject/YearGenreClusterer.scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3147)
+	at java.base/java.net.URI$Parser.checkChar(URI.java:3157)
+	at java.base/java.net.URI$Parser.parse(URI.java:3172)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URI.create(URI.java:904)
+	... 21 more
+
+2026.05.20 16:17:46 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:17:47 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.05.20 16:17:53 INFO  no build target found for C:\Users\yurek\OneDrive\Documents\GitHub\How-Love-Flies\How-Love-Flies\src\main\scala\com\yurekce\sparkproject\Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
