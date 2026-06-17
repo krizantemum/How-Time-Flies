@@ -24,7 +24,7 @@ object EmotionProcessing {
       .pretrained("bert_sequence_classifier_emotion", "en")
       .setInputCols(Array("document", "token"))
       .setOutputCol("emotion")
-      .setBatchSize(64) // process 16 chunks at once instead of 1
+      .setBatchSize(32) // process 16 chunks at once instead of 1
       .setMaxSentenceLength(128) // lyrics chunks won't exceed 128 tokens — saves memory
 
 
@@ -45,17 +45,15 @@ object EmotionProcessing {
     }
   })
 
-  // Fix 1 cont.: accept a pre-fitted PipelineModel instead of building inside run()
+  // Chunk-only contract: caller joins emotion fields back to (id, year, chunk)
+  // by the `chunk` key. This lets the caller dedup chunks before running BERT.
   def run(df: DataFrame, model: PipelineModel, inputCol: String = "chunk"): DataFrame = {
     val result = model.transform(df)
 
     val emotions = Seq("joy", "sadness", "anger", "love", "fear")
 
-    // Fix 3: extract each emotion's confidence as its own float column
     val withConfidences = emotions.foldLeft(
       result.select(
-        col("id"),
-        col("year"),
         col(inputCol).as("chunk"),
         col("emotion.result").getItem(0).as("emotion_label"),
         col("emotion.metadata").getItem(0).as("metadata")
@@ -67,15 +65,15 @@ object EmotionProcessing {
       )
     }
 
-    // Add dominant_emotion column using the UDF
     withConfidences
       .withColumn("dominant_emotion", dominantEmotionUDF(col("metadata")))
       .drop("metadata")
   }
 
   def aggregateBySong(df: DataFrame): DataFrame = {
-    // Pivot to get count of each dominant emotion per song
-    df.groupBy("id", "year")
+    // genre / niche_genres are constant per id, so grouping by them is a no-op
+    // for the counts but carries the metadata through to the final result.
+    df.groupBy("id", "year", "genre", "niche_genres")
       .pivot("dominant_emotion", Seq("joy", "sadness", "anger", "love", "fear"))
       .count()
       .na.fill(0)
