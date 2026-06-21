@@ -1,6 +1,6 @@
 {
     "files.watcherExclude": {
-        "**/target": true
+        "**/target/**": true
     },
     "code-runner.executorMap": {
         "scala": "$env:Path = \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin;\" + $env:Path; $env:CUDA_PATH = \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\"; Set-Location \"$workspaceRoot\"; & \"C:\\Users\\yurek\\tools\\sbt\\bin\\sbt.bat\" -batch \"runMain com.yurekce.sparkproject.Main\""
