@@ -177,4 +177,4 @@ CSV result files are tab-separated and include a header row.
 ---
 
 *An academic term project exploring big-data processing, distributed ML, and NLP on
-three decades of popular music.*
+three decades of music.*
