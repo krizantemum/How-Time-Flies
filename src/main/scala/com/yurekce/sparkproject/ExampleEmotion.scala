@@ -12,14 +12,11 @@ object ExampleEmotion {
 
     val spark = SparkSession.builder()
       .appName("ExampleEmotion")
-      .master("local[7]")
+      .master("local[2]")   // use all cores
       .getOrCreate()
 
     import spark.implicits._
 
-    // -----------------------------
-    // 1. Sample Data (lyrics)
-    // -----------------------------
     val df = Seq(
       "I'll meet you at the divide To break the spell",
       "A point where two worlds collide Yeah, we'll rebel",
@@ -31,16 +28,11 @@ object ExampleEmotion {
       "If I get high enough If I get high enough Will I see you again? Will I see you again?",
     ).toDF("text")
 
-    // -----------------------------
-    // 2. Split lyrics into lines
-    // -----------------------------
     val dfSplit = df
       .withColumn("text", explode(split($"text", "\n")))
       .filter(length($"text") > 0)
 
-    // -----------------------------
-    // 3. NLP Pipeline
-    // -----------------------------
+
     val documentAssembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")
@@ -57,15 +49,11 @@ object ExampleEmotion {
     val pipeline = new Pipeline()
       .setStages(Array(documentAssembler, tokenizer, classifier))
 
-    // -----------------------------
-    // 4. Run pipeline
-    // -----------------------------
+
     val model = pipeline.fit(dfSplit)
     val result = model.transform(dfSplit)
 
-    // -----------------------------
-    // 5. Show results
-    // -----------------------------
+
     result.select(
       $"text",
       $"emotion.result".as("emotion"),

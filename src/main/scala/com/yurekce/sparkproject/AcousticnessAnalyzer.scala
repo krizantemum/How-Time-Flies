@@ -3,14 +3,14 @@ package com.yurekce.sparkproject
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.{avg, count}
 
-object ValenceAnalyzer {
+object AcousticnessAnalyzer {
 
-  def valenceAverageByYear(df: DataFrame): Unit = {
+  def acousticnessAverageByYear(df: DataFrame): Unit = {
     val processedDf = df
       .groupBy("year")
       .agg(
-        avg("valence").as("avg_valence"),
-        count("valence").as("num_songs")
+        avg("acousticness").as("avg_acousticness"),
+        count("acousticness").as("num_songs")
       )
       .orderBy("year")
 
@@ -19,9 +19,8 @@ object ValenceAnalyzer {
       .option("header", "true")
       .option("sep", "\t")
       .mode("overwrite")
-      .save("csvFiles/valenceData")
+      .save("csvFiles/acousticnessData")
 
     processedDf.show(1000, truncate = false)
   }
-
 }

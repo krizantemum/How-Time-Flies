@@ -1,1 +1,26 @@
-/spotify_data
+# ─── Input data (large, not redistributed) ───────────────────────────
+/spotify_data/
+
+# ─── Spark / job outputs & checkpoints ───────────────────────────────
+/checkpoints/
+/spark-warehouse/
+# Spark writer internals (kept results live as plain .csv / .png)
+*.crc
+_SUCCESS
+
+# ─── Build output ────────────────────────────────────────────────────
+target/
+project/target/
+project/project/
+
+# ─── IDEs & language servers ─────────────────────────────────────────
+.idea/
+.bsp/
+.metals/
+.bloop/
+.vscode/
+*.iml
+
+# ─── OS noise ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
