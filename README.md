@@ -1,10 +1,10 @@
 # How Love Flies 🎵
 
-**A large-scale analysis of how the sound and sentiment of popular music evolved from 1990 to 2022.**
+**A large-scale analysis of how the sound and sentiment of music evolved from 1990 to 2022.**
 
 *How Love Flies* is an Apache Spark + Scala data pipeline that ingests a corpus of
 Spotify tracks and answers a simple question with big-data tooling: **how has music
-changed over three decades — both in how it *sounds* and in how it *feels*?**
+changed over three decades: both in how it *sounds* and in how it *reads*?**
 
 It combines two complementary views of every song:
 
