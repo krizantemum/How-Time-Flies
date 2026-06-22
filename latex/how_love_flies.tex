@@ -1,0 +1,203 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\graphicspath{{../report_figures/}}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+% NOTE (IEEE rule): no symbols, special characters, footnotes, or math in the title.
+\title{How Time Flies: Emotional and Sonic Change in Music, 1990--2022}
+
+\author{\IEEEauthorblockN{Yürekçe Altın}
+\IEEEauthorblockA{\textit{Computer Engineering} \\
+\textit{Middle East Technical University}\\
+Anakra, Turkey \\
+yurekce.altin@metu.edu.tr}
+}
+
+\maketitle
+
+\begin{abstract}
+    We humans evolve with each passing year with the tools and environments we build for ourselves.
+% 150--250 words. Cover, in order:
+% (1) the question (do popular songs grow sadder / less loving over 30 years?);
+% (2) data scale (Spotify songs + lyrics, 1990--2022);
+% (3) method in one breath (audio-feature aggregation + BERT lyric emotion
+%     classification on Apache Spark, K-Means era discovery, Mann--Kendall trend
+%     and change-point testing);
+% (4) two or three headline numbers (e.g. valence and lyric "love" decline;
+%     a dominant turning point around 2000);
+% (5) one-sentence takeaway.
+% IEEE rule: no math, symbols, or special characters in the abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+music information retrieval, emotion classification, BERT, Apache Spark, trend analysis, change-point detection
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Motivation: do popular songs get sadder / less loving over three decades?
+
+\subsection{Problem Statement}
+% State the research questions explicitly:
+%   RQ1 -- Do the emotions expressed in lyrics show significant trends over time?
+%   RQ2 -- Do audio features (valence, energy, loudness, ...) show trends?
+%   RQ3 -- Are there discrete "eras"/turning points, and do independent methods agree?
+
+\subsection{Contributions}
+% Bulleted list:
+%   - dual-modality emotion measurement (audio features + BERT lyric emotions) at scale;
+%   - from-scratch, self-tested statistical estimators (auditable for the report);
+%   - a cross-method consensus of which years changed.
+
+\section{Related Work}
+
+\subsection{Emotion and Sentiment in Song Lyrics}
+% Lexicon-based vs. transformer-based approaches.
+
+\subsection{Audio-Feature and Valence Studies of Musical Trends}
+
+\subsection{Trend and Change-Point Analysis of Cultural Time Series}
+
+\section{Dataset}
+
+\subsection{Source and Scope}
+% Spotify dataset [cite], 1990--2022; number of songs and lyrics; per-year counts.
+
+\subsection{Cleaning and Filtering}
+% Year and valence bounds, null handling.
+
+\subsection{Per-Year Normalization and Corpus-Growth Bias}
+% Why normalizing shares within each year removes the bias from the corpus
+% growing from a few thousand to tens of thousands of songs per year.
+
+\section{Methodology}
+
+\subsection{System Architecture and the Spark Pipeline}
+% Distributed processing, caching, per-year resumable checkpoints.
+
+\subsection{Audio-Feature Aggregation}
+
+\subsection{Lyric Emotion Classification with BERT}
+% 8-line lyric chunking; the 5-class model (joy, sadness, anger, love, fear);
+% per-song aggregation and the dominant-emotion rule.
+
+\subsection{Lexicon-Based Theme Detection}
+% Optional -- love / lust / loneliness word counts. Cut first if short on space.
+
+\subsection{Unsupervised Era Discovery via K-Means}
+% Mood clustering on (valence, energy) and genre-mix clustering;
+% standardization; K auto-selected by the Kneedle elbow heuristic.
+
+\subsection{Statistical Analysis}
+
+\subsubsection{Trend Testing}
+% Mann--Kendall test, Sen's slope, Benjamini--Hochberg FDR correction.
+
+\subsubsection{Change-Point Detection}
+% BIC-selected optimal partitioning (modified BIC) and Pettitt's test.
+
+\subsubsection{Cross-Method Consensus of Change Years}
+
+\subsubsection{Verification of the Statistical Implementations}
+% Self-tests against SciPy / statsmodels / ruptures. Strongest differentiator -- keep.
+
+\section{Results}
+
+\subsection{Audio-Feature Trends}
+% Reference Fig.~\ref{fig:tau} and Table~\ref{tab:trends}.
+
+\subsection{Lyric-Emotion Trends Over Time}
+% Reference Fig.~\ref{fig:emotions}.
+
+\subsection{Lyric Themes: Love, Lust, and Loneliness}
+% Optional.
+
+\subsection{Discovered Eras: Mood and Genre Clusters}
+% Reference Fig.~\ref{fig:mood}.
+
+\subsection{Change Points and Cross-Method Consensus}
+% Reference Fig.~\ref{fig:synthesis}; discuss the dominant turning point.
+
+\subsection{Performance and Scalability}
+% Optional -- runtime, batching, checkpointing.
+
+% ---- Example figure/table environments wired to your actual outputs. ----
+% Single-column figure:
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig8_emotion_trends.png}}
+\caption{Year-by-year evolution of the five BERT lyric emotions, 1990--2022.}
+\label{fig:emotions}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig5_feature_trend_tests.png}}
+\caption{Mann--Kendall trend strength per audio feature.}
+\label{fig:tau}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\columnwidth]{fig1_mood_scatter.png}}
+\caption{K-Means clustering of years on (valence, energy).}
+\label{fig:mood}
+\end{figure}
+
+% Double-column (full width) figure -- good for the consensus raster:
+\begin{figure*}[htbp]
+\centerline{\includegraphics[width=\textwidth]{fig9_change_synthesis.png}}
+\caption{Consensus of detected change years across every analysis.}
+\label{fig:synthesis}
+\end{figure*}
+
+% Results table placeholder:
+\begin{table}[htbp]
+\caption{Trend Test Results per Feature}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Feature} & \textbf{Kendall} $\boldsymbol{\tau}$ & \textbf{$p$ (FDR)} & \textbf{Direction} \\
+\hline
+% fill rows from trend_test_results.csv
+ &  &  &  \\
+\hline
+\end{tabular}
+\label{tab:trends}
+\end{center}
+\end{table}
+
+\section{Discussion}
+
+\subsection{Interpretation of the Observed Trends}
+
+\subsection{Convergent Validity Across Methods}
+
+\subsection{Threats to Validity and Limitations}
+
+\section{Conclusion and Future Work}
+
+\section*{Acknowledgment}
+% Optional. Remove the section if unused.
+
+\begin{thebibliography}{00}
+% Suggested entries to fill in (number consecutively, capitalize only the first
+% word of paper titles except proper nouns):
+\bibitem{b_dataset} % Spotify dataset source you used.
+\bibitem{b_spark}   % Apache Spark / Spark NLP (John Snow Labs).
+\bibitem{b_bert}    % BERT (Devlin et al., 2019).
+\bibitem{b_emotion} % The emotion-classification model or its training corpus.
+\bibitem{b_mk}      % Mann--Kendall trend test.
+\bibitem{b_sen}     % Sen's slope estimator.
+\bibitem{b_bh}      % Benjamini--Hochberg FDR.
+\bibitem{b_pettitt} % Pettitt's change-point test.
+\bibitem{b_bic}     % Modified BIC for change-points (Zhang \& Siegmund, 2007).
+\bibitem{b_kneedle} % Kneedle elbow method (Satopaa et al., 2011).
+\end{thebibliography}
+
+\end{document}
