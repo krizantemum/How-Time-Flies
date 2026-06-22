@@ -119,7 +119,9 @@ How-Love-Flies/
 │   ├── EmotionProcessing.scala   # BERT emotion pipeline + aggregation
 │   ├── *Analyzer.scala           # per-feature yearly trends
 │   └── Year*Clusterer.scala      # K-Means era detection + charts
-└── csvFiles/                     # committed analysis results + charts
+├── csvFiles/                     # committed analysis results + charts
+├── report_figures/               # Python post-analysis (trend/change-point tests) + paper figures
+└── latex/                        # write-up (how_love_flies.tex / .pdf)
 ```
 
 > Generated artifacts — the 850 MB input under `spotify_data/`, `checkpoints/`,
@@ -135,6 +137,11 @@ How-Love-Flies/
 - **sbt** 1.12+
 - ~12 GB of RAM available to the JVM (the BERT model + Spark broadcast are memory
   hungry; heap is set to `-Xmx12g` in [`build.sbt`](build.sbt))
+- **A CUDA-capable NVIDIA GPU** — the Spark session pulls the GPU build of Spark NLP
+  (`spark-nlp-gpu_2.12`, see
+  [`SparkConfig.scala`](src/main/scala/com/yurekce/sparkproject/config/SparkConfig.scala)),
+  which requires a working CUDA runtime to run the BERT emotion classifier. To run on
+  CPU instead, swap that dependency for the plain `spark-nlp` artifact.
 
 ### Data
 
@@ -178,3 +185,9 @@ CSV result files are tab-separated and include a header row.
 
 *An academic term project exploring big-data processing, distributed ML, and NLP on
 three decades of music.*
+
+## License
+
+All rights reserved. This repository is public for reference and educational
+viewing only; reuse, redistribution, or modification is not permitted without
+written consent. See [`LICENSE`](LICENSE).

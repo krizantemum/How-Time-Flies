@@ -13,6 +13,19 @@ target/
 project/target/
 project/project/
 
+# ─── Python bytecode ─────────────────────────────────────────────────
+__pycache__/
+*.pyc
+
+# ─── LaTeX build artifacts (keep .tex and .pdf) ──────────────────────
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
 # ─── IDEs & language servers ─────────────────────────────────────────
 .idea/
 .bsp/
