@@ -55,14 +55,6 @@ grouped by K-Means into mood clusters.
 
 ![Year mood scatter](csvFiles/clustering/year_mood/year_mood_scatter.png)
 
-### Genre mix over time
-Years clustered by the genre composition of their releases, drawn as a timeline.
-
-![Year genre timeline](csvFiles/clustering/year_genre/year_genre_timeline.png)
-
-Tabular results for every analysis live under [`csvFiles/`](csvFiles/) (see
-[Outputs](#outputs)).
-
 ## How it works
 
 The whole job is orchestrated by
