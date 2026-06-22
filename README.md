@@ -1,4 +1,4 @@
-# How Love Flies 🎵
+# How Time Flies 🎵
 
 **A large-scale analysis of how the sound and sentiment of music evolved from 1990 to 2022.**
 
