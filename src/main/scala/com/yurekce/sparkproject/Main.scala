@@ -161,9 +161,22 @@ object Main {
         healthyData.unpersist()
       }
 
-      // Read every year=* partition. Spark auto-discovers the year column
-      // from the directory name.
-      val savedChunks = spark.read.parquet(outputBase)
+      // Each per-year write keeps `year` as a real column AND lands in a
+      // year=YYYY directory. Reading the base dir would make Spark treat
+      // year=YYYY as a Hive partition, colliding with the in-data `year`
+      // column ("Found duplicate column(s) in the data schema and the
+      // partition schema: year"). Passing the leaf parquet files directly
+      // disables partition discovery, so the in-data `year` column is used
+      // as-is — and the already-computed year checkpoints are read, never
+      // recomputed.
+      val parquetFiles: Seq[String] = {
+        def leaves(f: java.io.File): Seq[String] =
+          if (f.isDirectory) f.listFiles().toSeq.flatMap(leaves)
+          else if (f.getName.endsWith(".parquet")) Seq(f.getPath.replace('\\', '/'))
+          else Seq.empty
+        leaves(new java.io.File(outputBase))
+      }
+      val savedChunks = spark.read.parquet(parquetFiles: _*)
       println(s"[run] Reading all years. Total chunk rows: ${savedChunks.count()}")
 
       val emotionPerSong = EmotionProcessing.aggregateBySong(savedChunks)
