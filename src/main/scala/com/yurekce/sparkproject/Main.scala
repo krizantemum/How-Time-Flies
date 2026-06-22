@@ -3,24 +3,10 @@ package com.yurekce.sparkproject
 import com.yurekce.sparkproject.config.SparkConfig
 import org.apache.spark.sql.functions.{avg, col, explode, max, min}
 import org.apache.spark.storage.StorageLevel
-import scala.sys.process._
 
 object Main {
-  
-   def speak(text: String): Unit = {
-    val escaped = text.replace("'", "''")
-
-    Seq(
-      "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-      "-Command",
-        s"Add-Type -AssemblyName System.Speech; " +
-        s"(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('$escaped')"
-      ).!
-  }
 
   def main(args: Array[String]): Unit = {
-    speak("Starting the Spark job. This may take a while.")
-
     println("Available cores: " + Runtime.getRuntime.availableProcessors())
 
     val bean = java.lang.management.ManagementFactory.getOperatingSystemMXBean
@@ -130,7 +116,6 @@ object Main {
 
         val tRunStart = System.nanoTime()
         pendingYears.zipWithIndex.foreach { case (y, idx) =>
-          speak(s"Starting processing for year $y. This may take a while.")
           val tYearStart = System.nanoTime()
           val yearChunked = lyricsChunked.filter(col("year") === y)
           val distinctY = yearChunked.select("chunk").distinct().coalesce(1)
@@ -149,7 +134,6 @@ object Main {
             f"(${idx + 1}/${pendingYears.length}, " +
             f"elapsed ${elapsed / 60}%.1f min, " +
             f"ETA ${remaining / 60}%.1f min)")
-            speak(s"Completed year $y. ${pendingYears.length - idx - 1} years to go.")
         }
         val totalRunSec = (System.nanoTime() - tRunStart) / 1e9
         println(f"[run] BERT inference complete. Total: ${totalRunSec / 60}%.1f min " +

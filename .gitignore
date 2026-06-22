@@ -26,6 +26,9 @@ __pycache__/
 *.fdb_latexmk
 *.synctex.gz
 
+# ─── Local-only dev helpers (not part of the public build) ───────────
+/src/main/scala/com/yurekce/sparkproject/dev/
+
 # ─── IDEs & language servers ─────────────────────────────────────────
 .idea/
 .bsp/
