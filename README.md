@@ -53,15 +53,36 @@ On top of these, the project clusters individual years by their *mood* and by th
 Each point is a single year, positioned by its mean valence and mean energy, then
 grouped by K-Means into mood clusters.
 
-![Year mood scatter](csvFiles/clustering/year_mood/year_mood_scatter.png)
+![Year mood scatter](report_figures/fig1_mood_scatter.png)
 
-### Genre mix over time
-Years clustered by the genre composition of their releases, drawn as a timeline.
+### Picking K — mood elbow
+WSSSE vs K for the mood clustering, with the auto-selected elbow.
 
-![Year genre timeline](csvFiles/clustering/year_genre/year_genre_timeline.png)
+![Mood elbow](report_figures/fig2_mood_elbow.png)
 
-Tabular results for every analysis live under [`csvFiles/`](csvFiles/) (see
-[Outputs](#outputs)).
+### Audio-feature trends
+Mann–Kendall trend tests across all audio features over 1990–2022.
+
+![Feature trend tests](report_figures/fig5_feature_trend_tests.png)
+
+### Change points
+Detected break years in the `(valence, energy)` mood signal.
+
+![Change points](report_figures/fig6_change_points.png)
+
+### Per-feature change points
+Change points detected within individual audio features.
+
+![Per-feature change points](report_figures/fig7_change_points_features.png)
+
+### Lyric emotion trends
+Share of songs by dominant BERT-classified emotion over time.
+
+![Emotion trends](report_figures/fig8_emotion_trends.png)
+
+Tabular results for every analysis live under [`csvFiles/`](csvFiles/) (Spark outputs)
+and [`report_figures/`](report_figures/) (Python post-analysis + the figures above);
+see [Outputs](#outputs).
 
 ## How it works
 
