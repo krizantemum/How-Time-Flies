@@ -1,0 +1,5 @@
+method,target,n_change_points,break_years,p_value
+optimal_partition_bic,valence+energy,4,1994;2000;2007;2012,
+pettitt,valence,1,2006,1.242458315182204e-05
+pettitt,energy,1,2002,0.000206354255278862
+kmeans_cluster_boundaries,valence+energy,7,1994;1996;1998;2000;2007;2012;2022,
