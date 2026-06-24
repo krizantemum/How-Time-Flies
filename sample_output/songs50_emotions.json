@@ -1,0 +1,369 @@
+{
+  "task": "dominant emotion per song lyric",
+  "emotion_options": [
+    "joy",
+    "sadness",
+    "anger",
+    "love",
+    "fear"
+  ],
+  "emotion_counts": {
+    "joy": 5,
+    "sadness": 21,
+    "anger": 7,
+    "love": 12,
+    "fear": 5
+  },
+  "songs": [
+    {
+      "id": "6qcTBJCVLQwATrFFBapcyf",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "sadness",
+      "rationale": "Regret and self-destruction over unrequited love and excess"
+    },
+    {
+      "id": "3ZdRd53sNTsVY3sLFoTriD",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "sadness",
+      "rationale": "Melancholy and doubt about conditional, unreciprocated love"
+    },
+    {
+      "id": "4A1Egs5QQCHGClMB53HLGW",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "anger",
+      "rationale": "Frustration and rage amid oppressive heat and social tension"
+    },
+    {
+      "id": "01s1bKgpQm5JxuhVJSMf7T",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "sadness",
+      "rationale": "Loneliness, disorientation, and anxiety after waking up alone"
+    },
+    {
+      "id": "5FhI6DE7oGxMmqqHRT6qbg",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "sadness",
+      "rationale": "Grief and pain over death, loss, and hardship in the streets"
+    },
+    {
+      "id": "5iws3klPhPLvXtVKL4YL9k",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "anger",
+      "rationale": "Aggressive, threatening braggadocio and hostility"
+    },
+    {
+      "id": "67NbLfQF1yClS82JWjQz8e",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "joy",
+      "rationale": "Defiant pride and high-energy celebration of identity"
+    },
+    {
+      "id": "4edFT7XYhwdnuRDECPQqGa",
+      "year": 2019,
+      "genre": "Folk",
+      "emotion": "love",
+      "rationale": "Warm, nostalgic romance and lasting affection"
+    },
+    {
+      "id": "7mj3oTUSVb9C4ydkaLPHjS",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "sadness",
+      "rationale": "Bitter, self-deprecating heartbreak over a breakup"
+    },
+    {
+      "id": "44MqvTCcpMokT7CD3jNqoP",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "sadness",
+      "rationale": "Heartbreak and scars from a painful, toxic relationship"
+    },
+    {
+      "id": "72jGeL3qwyOrmByT0DUWdj",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "fear",
+      "rationale": "Ominous confrontation with one's inner darkness and hidden dangers"
+    },
+    {
+      "id": "5f4a8LWYVgk4WEQyQhuOwU",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "love",
+      "rationale": "Devotional trust and surrender to God"
+    },
+    {
+      "id": "5ld178m33JKhm0F1XN1kQA",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "joy",
+      "rationale": "Manic, exhilarated, hedonistic thrill"
+    },
+    {
+      "id": "6UryEVkqPDLliZOG4UmFi9",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "sadness",
+      "rationale": "Wistful longing and melancholy about being remembered"
+    },
+    {
+      "id": "0HMco7zpjdsloHqToLjiLK",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "love",
+      "rationale": "Flirtatious attraction and desire"
+    },
+    {
+      "id": "1mQaehT2IA8PAb6drI1RNB",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "anger",
+      "rationale": "Frustrated protest and demand for change in a broken world"
+    },
+    {
+      "id": "4Za8yDzEhc8uZMBQRkiaGr",
+      "year": 2019,
+      "genre": "R&B",
+      "emotion": "sadness",
+      "rationale": "Grief over violence and death, tempered by faith and hope"
+    },
+    {
+      "id": "3ZbTIbNjbLZtIxk39IRrBQ",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "fear",
+      "rationale": "Dread and constant danger of street and drug life as a combat zone"
+    },
+    {
+      "id": "4wxm46qMm1P7JH1ivm1BQ2",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "fear",
+      "rationale": "Eerie surrender to darkness and loss of control"
+    },
+    {
+      "id": "6wKThjopVE8UVqyZfgaKcN",
+      "year": 2019,
+      "genre": "Folk",
+      "emotion": "anger",
+      "rationale": "Defiant resentment toward treacherous enemies and haters"
+    },
+    {
+      "id": "39Y6CSZq5BtGT9L9wxY3Sp",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "sadness",
+      "rationale": "Loss and desolation after everything ends"
+    },
+    {
+      "id": "2ppFa6QFJp10sfXgHJQGAy",
+      "year": 2019,
+      "genre": "R&B",
+      "emotion": "love",
+      "rationale": "Romantic and sexual desire, overwhelmed by a partner's love"
+    },
+    {
+      "id": "4vh6Rn6FVG4w79JmlZ5p7d",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "joy",
+      "rationale": "Euphoric, escapist pursuit of a high"
+    },
+    {
+      "id": "3h3GEFIEWkDISN3yAjhiG9",
+      "year": 2019,
+      "genre": "Country",
+      "emotion": "love",
+      "rationale": "Romantic courtship and affection"
+    },
+    {
+      "id": "39Y8Co0z2J1AbzF11rhuFO",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "sadness",
+      "rationale": "Worthlessness, neglect, and bleak disorientation"
+    },
+    {
+      "id": "4Nr465nCPqLBUi6xmms5uL",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "love",
+      "rationale": "Devotion and searching for a loved one amid chaos"
+    },
+    {
+      "id": "1tzp6KOZgxDW6ZNuen0Kqy",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "love",
+      "rationale": "Awkward, warm affection and excitement about someone"
+    },
+    {
+      "id": "2N7Qm7YdgvWlg8ZoxLkOND",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "sadness",
+      "rationale": "Painful personal transformation and emotional struggle"
+    },
+    {
+      "id": "5a4nh2oropkkl4j2qKgSzq",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "sadness",
+      "rationale": "Despair over a dysfunctional, crumbling relationship"
+    },
+    {
+      "id": "3eLdNmnRWr9gIyBcqTSSti",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "love",
+      "rationale": "Love as redemption from struggle and addiction"
+    },
+    {
+      "id": "6907kOMXzkmvE9sFlYLuBg",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "sadness",
+      "rationale": "Weary sorrow of nightlife monotony and addiction"
+    },
+    {
+      "id": "077vXHd5B0Zbdiui4ajQme",
+      "year": 2019,
+      "genre": "R&B",
+      "emotion": "love",
+      "rationale": "Confident rejection within romantic-relationship drama"
+    },
+    {
+      "id": "7tRYdVO93ppaQmrewQX93f",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "anger",
+      "rationale": "Cynical, nihilistic anger at politics and society"
+    },
+    {
+      "id": "6Sq3AiBZZEfiF21x6ESrI6",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "joy",
+      "rationale": "Carefree, upbeat desire for a good time"
+    },
+    {
+      "id": "6wwYN6lBOBdIXVkRhvbHb8",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "fear",
+      "rationale": "Apocalyptic dread and doom"
+    },
+    {
+      "id": "3MyrKuMveHZkZNTRQS9ILw",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "sadness",
+      "rationale": "Self-doubt and insecurity masked by dancing"
+    },
+    {
+      "id": "5uhAVbXda6xDa8d7k9kntL",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "sadness",
+      "rationale": "Despair, isolation, and hopelessness"
+    },
+    {
+      "id": "5AWULaFp4cqXXr82LXkDP1",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "anger",
+      "rationale": "Irritated defiance and wanting to be left alone"
+    },
+    {
+      "id": "5CalS8Gn69OOrR9aiw0ZO9",
+      "year": 2019,
+      "genre": "Folk",
+      "emotion": "love",
+      "rationale": "Deep romantic devotion and gratitude in a lasting relationship"
+    },
+    {
+      "id": "2Oq5UPVAHHegdrtluEhoEO",
+      "year": 2019,
+      "genre": "Folk",
+      "emotion": "sadness",
+      "rationale": "Grief and longing for a lost loved one"
+    },
+    {
+      "id": "2DkpoHJ1h88e9dyc6SFIm2",
+      "year": 2019,
+      "genre": "Folk",
+      "emotion": "sadness",
+      "rationale": "World-weary melancholy and regret about life and love"
+    },
+    {
+      "id": "3e4zN8UUqE5qvK4Uozdwhn",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "sadness",
+      "rationale": "Grief and loving tribute to someone lost"
+    },
+    {
+      "id": "5pJ1d5zTCb1DSoXZBLxxRG",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "sadness",
+      "rationale": "Anguish and burden over a shattered soul"
+    },
+    {
+      "id": "01niGNTcFtX1wweTTWQbb2",
+      "year": 2019,
+      "genre": "Electronic",
+      "emotion": "fear",
+      "rationale": "Bravery confronting fear that is staring one down"
+    },
+    {
+      "id": "0FhUOlLXRClxV8ovWQYQ2Y",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "anger",
+      "rationale": "Aggressive, defiant threats against the system"
+    },
+    {
+      "id": "2ZM3NHXmumdyy4i1BWyHwU",
+      "year": 2019,
+      "genre": "Blues",
+      "emotion": "sadness",
+      "rationale": "Reflective, elegiac retrospective facing life's end"
+    },
+    {
+      "id": "543bCW2ruMPmxUBWirQ3MR",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "love",
+      "rationale": "Fierce, loving devotion and protection of a partner"
+    },
+    {
+      "id": "07wsr8b3h0n18wBeyZU0ht",
+      "year": 2019,
+      "genre": "Pop",
+      "emotion": "sadness",
+      "rationale": "Loneliness and hidden pain behind a public persona"
+    },
+    {
+      "id": "2pfie4H3j2RbeYuAsmojRv",
+      "year": 2019,
+      "genre": "Rock",
+      "emotion": "joy",
+      "rationale": "Triumphant resilience and overcoming hardship"
+    },
+    {
+      "id": "3ZznDRLojMv5oWkeuvGSFR",
+      "year": 2019,
+      "genre": "Hip-Hop",
+      "emotion": "love",
+      "rationale": "Finding meaning and security in love"
+    }
+  ]
+}

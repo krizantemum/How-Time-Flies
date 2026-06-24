@@ -1,0 +1,23 @@
+metric,value
+total_songs,50
+agreements,17
+disagreements,33
+agreement_pct,34.0
+
+most_disagreed_pair (bert -> claude),count
+joy -> sadness,10
+joy -> love,10
+anger -> sadness,3
+joy -> anger,2
+anger -> joy,2
+joy -> fear,2
+sadness -> fear,2
+sadness -> anger,1
+anger -> fear,1
+
+emotion_most_involved_in_disagreements,count
+joy,26
+sadness,16
+love,10
+anger,9
+fear,5
