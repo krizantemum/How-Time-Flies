@@ -19,14 +19,25 @@
 \author{\IEEEauthorblockN{Yürekçe Altın}
 \IEEEauthorblockA{\textit{Computer Engineering} \\
 \textit{Middle East Technical University}\\
-Ankara, Turkey \\
+Ankara, Türkiye \\
 yurekce.altin@metu.edu.tr}
 }
 
 \maketitle
 
 \begin{abstract}
-    How has the produced music changed over the last three decades? We analyze the emotional and sonic change in produced music from 1990 to 2022 using a dataset from Spotify which includes 489.761 songs, their lyrics and sonic features. A Spark pipeline and BERT lyrics-emotion classification, K-Means valence and energy era discovery, and Mann-Kendall change point testing has been made. Over 33 years, we find that from 1990 to 2022, valence 22\% , acousticness 29\%, and duration decreased, while energy 18\%, tempo +4.9BPM, and loudness have +3.7 dB increased. The lyrics contains less words about love and more words about loneliness. The dominant turning point is around 2000, which is consistent across all methods.
+    How has the produced music changed over the last three decades? 
+    We analyze the emotional and sonic change in produced music from 
+    1990 to 2022 using a dataset from Spotify which includes 489.761 
+    songs, their lyrics and sonic features. A Spark pipeline and BERT 
+    lyrics-emotion classification, K-Means valence and energy era 
+    discovery, and Mann-Kendall change point testing has been made. 
+    Over 33 years, we find that from 1990 to 2022, valence (22\%) , 
+    acousticness (29\%), and duration (decreased), while energy (18\%), 
+    tempo (+4.9BPM), and loudness (+3.7 dB) have increased. 
+    The lyrics contains less words about love and more words 
+    about loneliness. The dominant turning point is around 2000, 
+    which is consistent across all methods.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -136,7 +147,10 @@ five emotions based on their highest probability, and after every chunk's
 highest probability emotion is found and added up with other chunks' emotion counts $c_e$ for
 $e \in \{\text{joy, sadness, anger, love, fear}\}$, the song's dominant emotion is 
 determined by the highest count, $\hat{e} = \arg\max_e c_e$. To ensure ties are broken
-fairly
+fairly, when $k$ emotions share the highest count we do not award the whole song to a
+single emotion; instead each tied emotion receives an equal vote of $1/k$. Every song
+therefore contributes a total weight of exactly one to its year, so the yearly emotion
+shares still sum to one while no emotion is favored by an arbitrary ordering.
 
 \subsection{Lexicon-Based Theme Detection}
 We also were curious about how the frequency of the words we associated with
@@ -193,8 +207,8 @@ decrease in duration with a Pettitt change point in 2016.
 In our analysis it seems to be that joy is the dominant emotion
 throughout the years, showing no significant trend. However, the other
 four emotions all do. 
-Love goes from 2.5\% in 1990 to 1.6\% in 2022, anger falls from 17.3\% to 15.0\%, 
-sadness rises from 19.6\% to 22.3\%, and fear rises from 1.3\% to 1.8\%.
+Love goes from 3.3\% in 1990 to 2.2\% in 2022, anger falls from 21.1\% to 18.1\%,
+sadness rises from 21.1\% to 23.4\%, and fear rises from 2.3\% to 2.5\%.
 Four of the five emotions are significant after FDR correction.
 
 \subsection{Lyric Themes: Love, Lust, and Loneliness}
@@ -309,10 +323,11 @@ with emotional expression, nuances and figurative language, which the model may
 have interpreted wrongly, and has fixed weights, so fine tuning is not possible.
 We have chosen 50 randomly selected songs and fed them into Claude Opus 4.8 Max
 and asked it to classify the lyrics into the five emotions, and compared the results.
-The LLM agent and BERT emotion model has disagreed in 33 out of 50 songs.
-The most disagreements arose from emotion joy, which Claude labeled
-as sadness (10 times), or love (10 times). It seems like the BERT model
-over-predicts joy. Third, we do not report any causal relationship 
+The LLM agent and BERT emotion model has disagreed in 32 out of 50 songs,
+with ties in the BERT chunk counts broken by the model's own summed confidence
+rather than an arbitrary ordering. The most disagreements arose from emotion joy,
+which Claude labeled as sadness (8 times), or love (8 times). It seems like the
+BERT model over-predicts joy. Third, we do not report any causal relationship 
 between results and external events, we only report their correlation.
 
 \begin{thebibliography}{00}

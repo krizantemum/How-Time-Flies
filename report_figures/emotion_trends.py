@@ -3,8 +3,12 @@ Year-by-year evolution of the five BERT lyric emotions (joy, sadness, anger,
 love, fear), from the pipeline's final per-song output checkpoints/finalResult.
 
 Two complementary views are produced for each year 1990-2022:
-  * song-level   - share of songs whose DOMINANT emotion (song_emotion) is each
-                   class. This is the pipeline's headline label.
+  * song-level   - share of songs whose DOMINANT emotion is each class, computed
+                   tie-aware: when a song's top chunk-count is tied between k
+                   emotions, each tied emotion gets an equal 1/k vote instead of
+                   the whole song going to the first emotion in the list. Every
+                   song still contributes total weight 1, so each year's shares
+                   sum to 1. (The old single-winner rule biased ties toward joy.)
   * chunk-level  - share of all 8-line lyric chunks classified as each class
                    (sum of the per-song joy..fear counts). Finer-grained; uses
                    every chunk, not just each song's winner.
@@ -48,12 +52,26 @@ def load_final():
     return df
 
 
+def tie_aware_weights(df):
+    """(len(df) x 5) weight matrix: each song spreads weight 1 equally over the
+    k emotions tied for its max chunk-count (1/k each). Songs with no classified
+    chunks (all-zero) get zero weight. This removes the joy bias of the
+    single-winner argmax, which awarded the whole song to the first tied emotion
+    in [joy, sadness, anger, love, fear]."""
+    counts = df[EMOTIONS].to_numpy(dtype=float)
+    maxes = counts.max(axis=1, keepdims=True)
+    winners = (counts == maxes) & (maxes > 0)        # tied maxima
+    k = winners.sum(axis=1, keepdims=True)           # how many tied
+    return np.divide(winners, k, out=np.zeros_like(counts), where=k > 0)
+
+
 def shares(df):
     """Return (song_level, chunk_level) DataFrames indexed by year, columns =
     EMOTIONS, each row summing to 1."""
-    # song-level: count songs per (year, dominant emotion)
-    song = (df.groupby(["year", "song_emotion"]).size()
-              .unstack("song_emotion").reindex(columns=EMOTIONS).fillna(0.0))
+    # song-level: tie-aware 1/k vote per song, summed per year
+    w = pd.DataFrame(tie_aware_weights(df), columns=EMOTIONS)
+    w["year"] = df["year"].to_numpy()
+    song = w.groupby("year")[EMOTIONS].sum()
     song = song.div(song.sum(axis=1), axis=0).sort_index()
 
     # chunk-level: sum the per-song chunk counts per year
@@ -82,8 +100,8 @@ def analyze():
     df = load_final()
     song, chunk = shares(df)
 
-    overall = df["song_emotion"].value_counts().reindex(EMOTIONS)
-    print("\nOverall dominant-emotion counts:")
+    overall = pd.Series(tie_aware_weights(df).sum(axis=0), index=EMOTIONS)
+    print("\nOverall dominant-emotion weight (tie-aware 1/k):")
     print((overall.to_frame("songs")
            .assign(pct=lambda d: (d.songs / d.songs.sum() * 100).round(1))).to_string())
 
